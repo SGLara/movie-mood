@@ -1,0 +1,109 @@
+---
+import SpeedInsights from "@vercel/speed-insights/astro";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="color-scheme" content="dark light" />
+		<meta
+			name="description"
+			content="Welcome to Movie Mood - A movie recommendation app based on your mood and preferences."
+		/>
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:site"
+			content="https://movie-mood-sglara.vercel.app/"
+		/>
+		<meta name="twitter:title" content="Movie Mood" />
+		<meta
+			name="twitter:description"
+			content="A movie recommendation app based on your mood and preferences."
+		/>
+		<meta
+			name="twitter:image"
+			content="https://movie-mood-sglara.vercel.app/assets/img/site-preview.avif"
+		/>
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Movie Mood" />
+		<meta
+			property="og:description"
+			content="A movie recommendation app based on your mood and preferences."
+		/>
+		<meta
+			property="og:url"
+			content="https://movie-mood-sglara.vercel.app/"
+		/>
+		<meta
+			property="og:image"
+			content="https://movie-mood-sglara.vercel.app/assets/img/site-preview.avif"
+		/>
+		<ViewTransitions />
+	</head>
+	<SpeedInsights />
+
+	<body>
+		<slot />
+	</body>
+
+	<style is:global>
+		:root {
+			--posible-dark-gray: #121720;
+			--posible-light-gray: #262d36;
+			--posible-text-light-gray: #c6c6ca;
+		}
+
+		* {
+			min-width: 0;
+			font: inherit;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+
+		img,
+		video,
+		svg {
+			display: block;
+			height: auto;
+			max-width: 100%;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100dvh;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			text-wrap: balance;
+		}
+
+		p {
+			text-wrap: pretty;
+		}
+
+		.scroll-hidden {
+			scrollbar-width: none;
+		}
+	</style>
+</html>
