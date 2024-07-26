@@ -1,0 +1,93 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { slide } from "astro:transitions";
+
+import EmojiSelected from "@/components/react/EmojiSelected";
+---
+
+<Layout title="Suggestions">
+    <main class="flex justify-center items-center h-screen w-full">
+        <aside
+            class="flex flex-col justify-end items-center max-w-44 w-48 h-full bg-slate-300/50 backdrop-blur-md overflow-hidden py-14"
+        >
+            <ul
+                class="flex flex-col items-center gap-5 rounded-lg uppercase text-lg font-light cursor-pointer"
+            >
+                <li class="hover:bg-slate-300 rounded-md px-5 py-2 w-full">
+                    Tv Series
+                </li>
+                <li class="hover:bg-slate-300 rounded-md px-5 py-2 w-full">
+                    Movies
+                </li>
+            </ul>
+        </aside>
+
+        <section class="relative flex w-full h-full overflow-hidden">
+            <div
+                class="absolute bottom-5 flex flex-row justify-between items-center w-full h-52 p-5"
+            >
+                <div
+                    class="flex flex-col justify-center items-start overflow-hidden w-full h-full"
+                >
+                    <ul
+                        class="flex flex-row justify-between items-center gap-10 uppercase text-lg font-light"
+                    >
+                        <li>Action</li>
+                        <li>Adventure</li>
+                        <li>Fantasy</li>
+                    </ul>
+
+                    <h1
+                        class="text-6xl font-bold uppercase spacing tracking-wide"
+                    >
+                        Wonder woman
+                    </h1>
+                    <p>2h 20 mins</p>
+                </div>
+
+                <div
+                    class="flex flex-col justify-evenly items-center overflow-hidden w-full h-full"
+                >
+                    <h3 class="text-lg uppercase tracking-widest">Storyline</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Natus quos recusandae autem tenetur, quidem vero dolores
+                        temporibus sunt consectetur incidunt! Repudiandae
+                        expedita nobis ex vel provident laborum quas, optio
+                        dicta?
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <aside
+            class="flex flex-col justify-start items-center max-w-64 w-64 h-full bg-slate-300/50 backdrop-blur-md overflow-hidden gap-3 py-3"
+        >
+            <div
+                class="flex flex-col justify-between items-center bg-slate-400 rounded-lg p-5 h-28 w-44"
+                transition:name="moodList"
+                transition:animate={slide({ duration: 5 })}
+            >
+                <p class="text-center">Mood</p>
+                <EmojiSelected client:load mode="mood" />
+            </div>
+
+            <div
+                class="flex flex-col justify-between items-center bg-slate-400 rounded-lg p-5 h-28 w-44"
+                transition:name="categoryList"
+                transition:animate={slide({ duration: 5 })}
+            >
+                <p class="text-center">Category</p>
+                <EmojiSelected client:load mode="category" />
+            </div>
+        </aside>
+    </main>
+
+    <style>
+        main {
+            background-image: url("https://image.tmdb.org/t/p/original/stKGOm8UyhuLPR9sZLjs5AkmncA.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</Layout>
