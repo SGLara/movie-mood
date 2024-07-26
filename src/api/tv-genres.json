@@ -1,0 +1,109 @@
+{
+    "genres": [
+        {
+            "id": 10759,
+            "name": "Action & Adventure",
+            "emoji": "💥",
+            "meaning": "explosion",
+            "code": "explosion"
+        },
+        {
+            "id": 16,
+            "name": "Animation",
+            "emoji": "🎨",
+            "meaning": "art",
+            "code": "art"
+        },
+        {
+            "id": 35,
+            "name": "Comedy",
+            "emoji": "😂",
+            "meaning": "joy",
+            "code": "joy"
+        },
+        {
+            "id": 80,
+            "name": "Crime",
+            "emoji": "🕵️",
+            "meaning": "detective",
+            "code": "detective"
+        },
+        {
+            "id": 99,
+            "name": "Documentary",
+            "emoji": "🎥",
+            "meaning": "camera",
+            "code": "camera"
+        },
+        {
+            "id": 18,
+            "name": "Drama",
+            "emoji": "🎭",
+            "meaning": "theater",
+            "code": "theater"
+        },
+        {
+            "id": 10751,
+            "name": "Family",
+            "emoji": "👨‍👩‍👧‍👦",
+            "meaning": "family",
+            "code": "family"
+        },
+        {
+            "id": 10762,
+            "name": "Kids",
+            "emoji": "🧒",
+            "meaning": "child",
+            "code": "child"
+        },
+        {
+            "id": 9648,
+            "name": "Mystery",
+            "emoji": "🕵️‍♂️",
+            "meaning": "spy",
+            "code": "spy"
+        },
+        {
+            "id": 10763,
+            "name": "News",
+            "emoji": "📰",
+            "meaning": "newspaper",
+            "code": "newspaper"
+        },
+        {
+            "id": 10764,
+            "name": "Reality",
+            "emoji": "🌟",
+            "meaning": "star",
+            "code": "star"
+        },
+        {
+            "id": 10765,
+            "name": "Sci-Fi & Fantasy",
+            "emoji": "👽",
+            "meaning": "alien",
+            "code": "alien"
+        },
+        {
+            "id": 10767,
+            "name": "Talk",
+            "emoji": "🗣️",
+            "meaning": "talk",
+            "code": "talk"
+        },
+        {
+            "id": 10768,
+            "name": "War & Politics",
+            "emoji": "⚔️",
+            "meaning": "crossed_swords",
+            "code": "crossed_swords"
+        },
+        {
+            "id": 37,
+            "name": "Western",
+            "emoji": "🤠",
+            "meaning": "cowboy",
+            "code": "cowboy"
+        }
+    ]
+}
