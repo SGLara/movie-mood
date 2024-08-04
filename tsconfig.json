@@ -32,6 +32,9 @@
       ],
       "@/config/*": [
         "src/config/*"
+      ],
+      "@/hooks/*": [
+        "src/hooks/*"
       ]
     },
     "jsx": "react-jsx",
