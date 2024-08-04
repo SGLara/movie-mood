@@ -1,6 +1,6 @@
 import { MAX_CATEGORY_EMOJI_SELECTED, MAX_MOOD_EMOJI_SELECTED } from '@/config/emoji'
 import { emojisCategory, emojisMood } from '@/helpers/emoji'
-import { category, mood } from '@/store/emojiStore'
+import { category, mood } from '@/store/emoji'
 import type { EmojiList, EmojiMode, EmojiSelected } from '@/types/Emoji'
 import { useStore } from '@nanostores/react'
 
@@ -45,11 +45,11 @@ export default function EmojiListRenderer (
       {
         emojis.map((emoji) => (
           <li
-            className={`${selectedEmojisState.includes(emoji.label) ? 'bg-slate-300' : ''} flex flex-col justify-center items-center text-center w-28 hover:bg-slate-500 active:bg-slate-500 rounded-lg px-5 cursor-pointer`}
+            className={`${selectedEmojisState.includes(emoji.label) ? 'bg-slate-300/30' : ''} flex flex-col justify-center items-center text-center w-28 hover:bg-slate-300/20 hover:border-slate-100 hover:border-[1px] active:bg-slate-300/30 rounded-lg px-5 cursor-pointer border-[1px] border-slate-300/0 transition-all`}
             key={emoji.label}
             onClick={() => handleEmojiClick(emoji.label, mode)}
           >
-            <img src={emoji.src} alt={emoji.alt} width={50} height={50} />
+            <img loading='eager' decoding='async' src={emoji.src} alt={emoji.alt} width={50} height={50} />
             <p>{emoji.label.charAt(0).toUpperCase() + emoji.label.slice(1).toLowerCase()}</p>
           </li>
         ))
