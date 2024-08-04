@@ -1,14 +1,14 @@
 ---
 import EmojiPickerComponent from "@/components/react/EmojiPickerComponent.tsx";
+import TitleMode from "./react/TitleMode";
 ---
 
 <section
-	class="flex flex-col items-center justify-between py-20 rounded-lg bg-gradient-to-b from-gray-700 w-[70rem] max-h-full h-full border-gray-500 border-[1px] overflow-hidden"
+	class="flex flex-col items-center justify-between py-20 rounded-lg bg-slate-300/30 backdrop-blur-lg w-[70rem] max-h-full h-full border-slate-300 border-[1px] overflow-hidden"
 >
 	<div class="flex flex-col items-center justify-center">
-		<h1 class="text-4xl font-bold text-white">Are you bored?</h1>
-		<h2>Let's find something to watch!</h2>
+		<TitleMode client:only="react" />
 	</div>
 
-	<EmojiPickerComponent client:load />
+	<EmojiPickerComponent client:only="react" />
 </section>
