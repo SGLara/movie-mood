@@ -6,10 +6,3 @@ export interface EmojiList {
   label: string
   alt: string
 }
-
-export type EmojiMoodSelected = string[]
-
-export interface EmojiCategorySelected {
-  id: number
-  name: string
-}

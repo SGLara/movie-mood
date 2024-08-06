@@ -1,6 +1,6 @@
-import type { EmojiCategorySelected, EmojiMoodSelected } from '@/types/Emoji'
+import type { EmojiList } from '@/types/Emoji'
 import { atom } from 'nanostores'
 
-export const mood = atom<EmojiMoodSelected>([])
-export const category = atom<EmojiCategorySelected[]>([])
+export const mood = atom<EmojiList[]>([])
+export const category = atom<EmojiList[]>([])
 export const emojiMode = atom<'mood' | 'category'>('mood')
