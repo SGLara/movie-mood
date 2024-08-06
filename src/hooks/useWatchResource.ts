@@ -23,10 +23,8 @@ export default function useWatchResource (): {
 
     if (suggestions === false) {
       setMovies(movies)
-    } else if (Array.isArray(suggestions)) {
+    } else {
       const suggestionData = movies.filter((movie: any) => suggestions.includes(movie.id))
-      console.log(suggestionData)
-
       setMovies(suggestionData)
     }
   }
