@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { EmojiSelected } from '@/types/Emoji'
 import { atom } from 'nanostores'
 
