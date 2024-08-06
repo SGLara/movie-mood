@@ -2,9 +2,10 @@
 import { slide } from "astro:transitions";
 
 import EmojiSelected from "@/components/react/EmojiSelected";
-import MovieInfo from "@/components/react/MovieInfo";
-import MovieList from "@/components/react/MovieList";
 import SuggestionBackground from "@/components/react/SuggestionBackground";
+import WatchList from "@/components/react/WatchList";
+import WatchMenu from "@/components/react/WatchMenu";
+import WatchResourceInfo from "@/components/react/WatchResourceInfo";
 import Layout from "@/layouts/Layout.astro";
 ---
 
@@ -14,22 +15,11 @@ import Layout from "@/layouts/Layout.astro";
 
         <aside
             class="flex flex-col justify-end items-center max-w-44 w-48 h-full bg-slate-300/10 backdrop-blur-lg overflow-hidden py-14 mix-blend-difference"
-            transition:name="form"
-            transition:animate={slide({ duration: 100 })}
         >
-            <ul
-                class="flex flex-col items-center gap-5 rounded-lg uppercase text-lg font-light cursor-pointer"
-            >
-                <li class="hover:bg-slate-300/20 rounded-md px-5 py-2 w-full">
-                    Movies
-                </li>
-                <li class="hover:bg-slate-300/20 rounded-md px-5 py-2 w-full">
-                    Tv Series
-                </li>
-            </ul>
+            <WatchMenu client:only="react" />
         </aside>
 
-        <MovieInfo client:only="react" />
+        <WatchResourceInfo client:only="react" />
 
         <aside
             class="flex flex-col justify-start items-center max-w-64 w-64 h-full bg-slate-300/10 backdrop-blur-lg overflow-hidden gap-3 p-3"
@@ -52,7 +42,7 @@ import Layout from "@/layouts/Layout.astro";
                 <EmojiSelected client:only="react" mode="category" />
             </div>
 
-            <MovieList client:only="react" />
+            <WatchList client:only="react" />
         </aside>
     </main>
 </Layout>

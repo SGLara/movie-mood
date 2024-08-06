@@ -1,11 +1,11 @@
-import { selectedMovie } from '@/store/movies'
-import type { Genres } from '@/types/Movie'
+import { selectedResource } from '@/store/watch-resource'
+import type { Genre, MovieDetails } from '@/types/TMDBApi'
 import { useStore } from '@nanostores/react'
 
-export default function MovieInfo (): JSX.Element {
-  const movie = useStore(selectedMovie)
+export default function WatchResourceInfo (): JSX.Element {
+  const resource = useStore(selectedResource) as MovieDetails
 
-  if (!movie.title) return <div>Loading...</div>
+  if (Object.keys(resource).length === 0) return <div>Loading...</div>
 
   const runtimeFormated = (minutes: number): string => {
     const hours = Math.floor(minutes / 60)
@@ -25,7 +25,7 @@ export default function MovieInfo (): JSX.Element {
             className='flex flex-row justify-between items-center gap-10 uppercase text-lg font-light'
           >
             {
-              movie.genres.slice(0, 4).map((genre: Genres) => (
+              resource?.genres.slice(0, 4).map((genre: Genre) => (
                 <li key={genre.id}>
                   {genre.name}
                 </li>
@@ -36,9 +36,11 @@ export default function MovieInfo (): JSX.Element {
           <h1
             className='text-5xl font-bold uppercase spacing tracking-wide'
           >
-            {movie.title}
+            {
+              resource?.title
+            }
           </h1>
-          <p className='text-md'>{runtimeFormated(movie.runtime)}</p>
+          <p className='text-md'>{runtimeFormated(resource.runtime)}</p>
         </div>
 
         <div
@@ -46,7 +48,7 @@ export default function MovieInfo (): JSX.Element {
         >
           <h3 className='text-lg uppercase tracking-widest'>Storyline</h3>
           <p>
-            {movie.overview}
+            {resource.overview}
           </p>
         </div>
       </div>

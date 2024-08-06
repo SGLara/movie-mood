@@ -20,10 +20,10 @@ export default function EmojiSelected ({ mode }: { mode: EmojiMode }): JSX.Eleme
                 decoding='async'
                 key={`${emojiSelected}-${mode}`}
                 src={
-                        emojis.find(
-                          (emoji) =>
-                            emoji.label === emojiSelected
-                        )?.src
+                      emojis.find(
+                        (emoji) =>
+                          emoji.label === emojiSelected
+                      )?.src
                     }
                 alt={emojiSelected}
                 width={50}

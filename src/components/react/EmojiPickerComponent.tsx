@@ -41,11 +41,10 @@ export default function EmojiPickerComponent (): JSX.Element {
   return (
     <div
       className='flex flex-col justify-between items-center h-full w-full'
-      style={{ viewTransitionName: 'form' }}
     >
       <div className='flex flex-row justify-between items-center gap-5 h-full w-full px-5'>
         <div
-          className='flex flex-col justify-between items-center bg-slate-300/20 rounded-lg p-5 h-28 w-44'
+          className='flex flex-col justify-between items-center bg-slate-300/30 rounded-lg p-5 h-28 w-44'
           style={{ viewTransitionName: 'moodList' }}
         >
           <p className='text-center'>Mood</p>
@@ -57,7 +56,7 @@ export default function EmojiPickerComponent (): JSX.Element {
         </div>
 
         <div
-          className='flex flex-col justify-between items-center bg-slate-300/20 rounded-lg p-5 h-28 w-44'
+          className='flex flex-col justify-between items-center bg-slate-300/30 rounded-lg p-5 h-28 w-44'
           style={{ viewTransitionName: 'categoryList' }}
         >
           <p className='text-center'>Category</p>
