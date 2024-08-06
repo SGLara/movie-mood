@@ -1,5 +1,8 @@
 import { getMovieDetails, getMovies, getTvSerieDetails, getTvSeries } from '@/services/TMDB'
+import { category } from '@/store/emoji'
 import { selectedResource } from '@/store/watch-resource'
+import type { EmojiList } from '@/types/Emoji'
+import { useStore } from '@nanostores/react'
 import { useState } from 'react'
 
 export default function useWatchResource (): {
@@ -9,9 +12,11 @@ export default function useWatchResource (): {
 } {
   const [movies, setMovies] = useState<any[]>([])
   const [tvSeries, setTvSeries] = useState<any[]>([])
+  const categorySelected = useStore(category)
 
   const getMoviesData = async (): Promise<any> => {
-    const movies = await getMovies()
+    const mappedCategories = categorySelected.map((category: EmojiList) => category.id) as number[]
+    const movies = await getMovies({ categoryIds: mappedCategories })
     setMovies(movies)
   }
 

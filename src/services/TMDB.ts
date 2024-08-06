@@ -25,9 +25,9 @@ export const getTvSerieDetails = async (tvSerieId: number): Promise<any> => {
   }
 }
 
-export const getMovies = async (): Promise<any[]> => {
+export const getMovies = async ({ categoryIds }: { categoryIds: number[] }): Promise<any[]> => {
   try {
-    const movies = await fetch(`${import.meta.env.PUBLIC_TMDB_API_URL}/discover/movie?language=en-US&api_key=${import.meta.env.PUBLIC_TMDB_API_KEY}`, options)
+    const movies = await fetch(`${import.meta.env.PUBLIC_TMDB_API_URL}/discover/movie?language=en-US&with_genres=${categoryIds.join(',')}&api_key=${import.meta.env.PUBLIC_TMDB_API_KEY}`, options)
     const moviesInfo = await movies.json()
     return moviesInfo.results
   } catch (error) {
