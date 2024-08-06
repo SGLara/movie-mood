@@ -35,6 +35,9 @@
       ],
       "@/hooks/*": [
         "src/hooks/*"
+      ],
+      "@/services/*": [
+        "src/services/*"
       ]
     },
     "jsx": "react-jsx",
