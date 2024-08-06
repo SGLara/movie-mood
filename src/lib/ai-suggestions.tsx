@@ -5,7 +5,7 @@ import type { MovieDetails } from '@/types/TMDBApi'
 import { createOpenAI } from '@ai-sdk/openai'
 import { generateText } from 'ai'
 
-if (!import.meta.env.PUBLIC_PERPLEXITY_API_KEY) {
+if (import.meta.env.PUBLIC_PERPLEXITY_API_KEY === '') {
   throw new Error(
     'PUBLIC_PERPLEXITY_API_KEY environment variable is required. You can get this via https://vercel.com/docs/integrations/ai'
   )
