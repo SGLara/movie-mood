@@ -1,5 +1,6 @@
-import { getMovieDetails, getMovies, getTvSerieDetails, getTvSeries } from '@/services/TMDB'
-import { category } from '@/store/emoji'
+import { AISuggestions } from '@/lib/ai-suggestions'
+import { getMovieDetails, getMovies } from '@/services/TMDB'
+import { category, mood } from '@/store/emoji'
 import { selectedResource } from '@/store/watch-resource'
 import type { EmojiList } from '@/types/Emoji'
 import { useStore } from '@nanostores/react'
@@ -11,28 +12,28 @@ export default function useWatchResource (): {
   getMovieInfo: (movieId: number) => Promise<any>
 } {
   const [movies, setMovies] = useState<any[]>([])
-  const [tvSeries, setTvSeries] = useState<any[]>([])
   const categorySelected = useStore(category)
+  const moodSelected = useStore(mood)
 
   const getMoviesData = async (): Promise<any> => {
     const mappedCategories = categorySelected.map((category: EmojiList) => category.id) as number[]
     const movies = await getMovies({ categoryIds: mappedCategories })
-    setMovies(movies)
+
+    const suggestions = await AISuggestions(movies, moodSelected[0])
+
+    if (suggestions === false) {
+      setMovies(movies)
+    } else if (Array.isArray(suggestions)) {
+      const suggestionData = movies.filter((movie: any) => suggestions.includes(movie.id))
+      console.log(suggestionData)
+
+      setMovies(suggestionData)
+    }
   }
 
   const getMovieInfo = async (movieId: number): Promise<any> => {
     const movieInfo = await getMovieDetails(movieId)
     selectedResource.set(movieInfo)
-  }
-
-  const getTvSeriesData = async (): Promise<any> => {
-    const tvSeries = await getTvSeries()
-    setTvSeries(tvSeries)
-  }
-
-  const getTvSerieInfo = async (tvSerieId: number): Promise<any> => {
-    const tvSerieInfo = await getTvSerieDetails(tvSerieId)
-    selectedResource.set(tvSerieInfo)
   }
 
   return {

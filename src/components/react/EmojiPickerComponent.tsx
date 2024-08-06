@@ -67,6 +67,7 @@ export default function EmojiPickerComponent (): JSX.Element {
       ($mood.length === MAX_MOOD_EMOJI_SELECTED && $category.length > 0) &&
         <a
           href='/suggestions'
+          data-astro-prefetch
           className='flex justify-between gap-2 bg-slate-400 px-5 py-2 rounded-lg text-white hover:bg-slate-500'
         >
           Let's go! <SparklesIcon />
