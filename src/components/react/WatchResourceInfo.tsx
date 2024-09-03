@@ -51,7 +51,7 @@ export default function WatchResourceInfo (): JSX.Element {
         </div>
 
         <div className='flex flex-col justify-evenly items-center overflow-hidden w-full h-full'>
-          <h3 className='text-lg uppercase tracking-widest'>Storyline</h3>
+          <h3 className={`text-lg uppercase tracking-widest ${isLoading ? 'hidden' : ''}`}>Storyline</h3>
           <p>
             {isLoading
               ? (
