@@ -1,0 +1,41 @@
+---
+interface Props {
+    width?: string;
+    height?: string;
+    color?: string;
+}
+
+const { width, height, color } = Astro.props;
+---
+
+<div
+    class="skeleton"
+    style={`
+        width: ${width || "100%"};
+        height: ${height || "16px"};
+        background-color: ${color || "#cccccc"}
+    `}
+>
+    Loading...
+</div>
+
+<style>
+    skeleton {
+        display: inline-block;
+        background-color: #cccccc;
+        animation: pulse 1.5s infinite;
+        border-radius: 4px;
+    }
+
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
