@@ -1,4 +1,7 @@
 import type { MovieDetails } from '@/types/TMDBApi'
-import { atom } from 'nanostores'
+import { persistentAtom } from '@nanostores/persistent'
 
-export const selectedResource = atom<MovieDetails | {}>({})
+export const selectedResource = persistentAtom<MovieDetails | {}>('selectedResource', {}, {
+  encode: JSON.stringify,
+  decode: JSON.parse
+})

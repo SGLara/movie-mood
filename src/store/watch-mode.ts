@@ -1,4 +1,4 @@
 import type { WatchMode } from '@/types/Watch'
-import { atom } from 'nanostores'
+import { persistentAtom } from '@nanostores/persistent'
 
-export const watchMode = atom<WatchMode>('movie')
+export const watchMode = persistentAtom<WatchMode>('watchMode', 'movie')
