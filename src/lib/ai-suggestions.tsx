@@ -28,7 +28,7 @@ export async function AISuggestions (resourceData: MovieDetails[], mood: EmojiLi
     ["idExample3", "idExample2"]`
 
   const { text } = await generateText({
-    model: perplexity('llama-3-sonar-small-32k-chat'),
+    model: perplexity(import.meta.env.AI_MODEL ?? 'llama-3.1-sonar-small-128k-chat'),
     prompt: promptText
   })
 
