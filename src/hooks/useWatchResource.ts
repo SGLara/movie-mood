@@ -1,5 +1,6 @@
 import { AISuggestions } from '@/lib/ai-suggestions'
-import { getMovieDetails, getMovies } from '@/services/TMDB'
+import { GET as getMovies } from '@/pages/api/movies'
+import { GET as getMovieDetails } from '@/pages/api/movies-details'
 import { category, mood } from '@/store/emoji'
 import { selectedResource } from '@/store/watch-resource'
 import type { EmojiList } from '@/types/Emoji'
@@ -17,21 +18,24 @@ export default function useWatchResource (): {
 
   const getMoviesData = async (): Promise<any> => {
     const mappedCategories = categorySelected.map((category: EmojiList) => category.id) as number[]
-    const movies = await getMovies({ categoryIds: mappedCategories })
+    const res = await getMovies({ params: { categoryIds: mappedCategories } })
+    const movies = await res.json()
 
-    const suggestions = await AISuggestions(movies, moodSelected[0])
+    const suggestions = await AISuggestions(movies.data, moodSelected[0])
 
     if (suggestions === false) {
-      setMovies(movies)
+      setMovies(movies.data)
     } else {
-      const suggestionData = movies.filter((movie: any) => suggestions.includes(movie.id))
+      const suggestionData = movies.data.filter((movie: any) => suggestions.includes(movie.id))
       setMovies(suggestionData)
     }
   }
 
   const getMovieInfo = async (movieId: number): Promise<any> => {
-    const movieInfo = await getMovieDetails(movieId)
-    selectedResource.set(movieInfo)
+    const res = await getMovieDetails({ params: { movieId } })
+    const movieInfo = await res.json()
+
+    selectedResource.set(movieInfo.data)
   }
 
   return {
