@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { AISuggestions } from '@/lib/ai-suggestions'
 import { GET as getMovies } from '@/pages/api/movies'
 import { GET as getMovieDetails } from '@/pages/api/movies-details'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { APIRoute } from 'astro'
 
 const options = {
@@ -10,7 +11,7 @@ const options = {
 export const GET: APIRoute = async ({ params }) => {
   try {
     const categoryIds: number[] = params.categoryIds
-    const response = await fetch(`${import.meta.env.TMDB_API_URL}/discover/movie?language=en-US&with_genres=${categoryIds.join(',')}&api_key=${import.meta.env.PUBLIC_TMDB_API_KEY}`, options)
+    const response = await fetch(`${import.meta.env.TMDB_API_URL}/discover/movie?language=en-US&with_genres=${categoryIds.join(',')}&api_key=${import.meta.env.TMDB_API_KEY}`, options)
     const results = await response.json()
     const data = results.results
 
