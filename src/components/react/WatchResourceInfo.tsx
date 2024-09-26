@@ -39,28 +39,28 @@ export default function WatchResourceInfo (): JSX.Element {
                   resource?.title
                 )}
           </h1>
-          <p className='text-md'>
-            {isLoading
-              ? (
-                <div className='w-full h-full px-14 py-3 animate-pulse bg-slate-300 rounded-sm' />
-                )
-              : (
-                  runtimeFormated(resource.runtime)
-                )}
-          </p>
+          {isLoading
+            ? (
+              <div className='w-full h-full px-14 py-3 animate-pulse bg-slate-300 rounded-sm' />
+              )
+            : (
+              <p className='text-md'>
+                {runtimeFormated(resource.runtime)}
+              </p>
+              )}
         </div>
 
         <div className='flex flex-col justify-evenly items-center overflow-hidden w-full h-full'>
           <h3 className={`text-lg uppercase tracking-widest ${isLoading ? 'hidden' : ''}`}>Storyline</h3>
-          <p>
-            {isLoading
-              ? (
-                <div className='w-full h-full px-96 py-80 animate-pulse bg-slate-300 rounded-sm' />
-                )
-              : (
-                  resource.overview
-                )}
-          </p>
+          {isLoading
+            ? (
+              <div className='w-full h-full px-96 py-80 animate-pulse bg-slate-300 rounded-sm' />
+              )
+            : (
+              <p>
+                {resource.overview}
+              </p>
+              )}
         </div>
       </div>
     </section>
