@@ -1,8 +1,6 @@
 // @ts-nocheck
 
 import { AISuggestions } from '@/lib/ai-suggestions'
-import { GET as getMovies } from '@/pages/api/movies'
-import { GET as getMovieDetails } from '@/pages/api/movies-details'
 import { category, mood } from '@/store/emoji'
 import { selectedResource } from '@/store/watch-resource'
 import type { EmojiList } from '@/types/Emoji'
@@ -20,7 +18,7 @@ export default function useWatchResource (): {
 
   const getMoviesData = async (): Promise<any> => {
     const mappedCategories = categorySelected.map((category: EmojiList) => category.id) as number[]
-    const res = await getMovies({ params: { categoryIds: mappedCategories } })
+    const res = await fetch('api/movies.json?category_ids=' + mappedCategories.join(','))
     const movies = await res.json()
 
     const suggestions = await AISuggestions(movies.data, moodSelected[0])
@@ -34,7 +32,7 @@ export default function useWatchResource (): {
   }
 
   const getMovieInfo = async (movieId: number): Promise<any> => {
-    const res = await getMovieDetails({ params: { movieId } })
+    const res = await fetch(`api/movies-details/${movieId}`)
     const movieInfo = await res.json()
 
     selectedResource.set(movieInfo.data)
