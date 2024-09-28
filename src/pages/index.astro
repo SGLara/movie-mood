@@ -1,13 +1,6 @@
 ---
 import Form from "@/components/Form.astro";
-import Intro from "@/components/Intro.astro";
 import Layout from "@/layouts/Layout.astro";
-
-interface Props {
-	withIntro?: boolean;
-}
-
-const withIntro = Astro.url.searchParams.get("withIntro");
 ---
 
 <Layout title="Welcome to Astro.">
@@ -16,6 +9,5 @@ const withIntro = Astro.url.searchParams.get("withIntro");
 	>
 		<Form />
 	</main>
-
-	<Intro />
+	<!-- <Intro /> -->
 </Layout>

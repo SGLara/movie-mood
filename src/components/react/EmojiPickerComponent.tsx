@@ -38,6 +38,12 @@ export default function EmojiPickerComponent (): JSX.Element {
     }
   }, [$emojiMode])
 
+  const resetButtonClickHandler = (): void => {
+    mood.set([])
+    category.set([])
+    emojiMode.set('mood')
+  }
+
   return (
     <div
       className='flex flex-col justify-between items-center h-full w-full'
@@ -65,13 +71,21 @@ export default function EmojiPickerComponent (): JSX.Element {
       </div>
       {
       ($mood.length === MAX_MOOD_EMOJI_SELECTED && $category.length > 0) &&
-        <a
-          href='/suggestions'
-          data-astro-prefetch
-          className='flex justify-between gap-2 bg-slate-600 px-5 py-2 rounded-lg text-white hover:bg-slate-500'
-        >
-          Let's go! <SparklesIcon />
-        </a>
+        <div className='flex flex-row justify-center gap-5 mt-10'>
+          <a
+            href='/suggestions'
+            data-astro-prefetch
+            className='flex justify-between gap-2 bg-slate-600 px-5 py-2 rounded-lg text-white hover:bg-slate-500'
+          >
+            Let's go! <SparklesIcon />
+          </a>
+          <button
+            className='flex justify-between gap-2 bg-slate-600 px-5 py-2 rounded-lg text-white hover:bg-slate-500'
+            onClick={resetButtonClickHandler}
+          >
+            Reset
+          </button>
+        </div>
       }
     </div>
   )
